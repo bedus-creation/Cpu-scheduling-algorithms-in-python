@@ -66,9 +66,20 @@ class Cpuschedule:
 
     # Priority Algorithm
     def Priority(self):
-        pass
-        # Shortest job First Algorithm with Preemption
+        Twt = 0.0
+        Bst = 0.0
+        Tat = 0.0
+        Wt = [0]
+        B = []
+        P = []
+        self.n = input("Enter the no of processes:\n")
+        for i in range(int(self.n)):
+            temp = input("Enter The BurstTime for Process p" + str(i)+"\n")
+            B.append(temp)
+            temp = input("Enter The Priority for Process p" + str(i)+"\n")
+            P.append(temp)
 
+    # Shortest job First Algorithm with Preemption
     def SjfP(self):
         pass
 
@@ -85,4 +96,5 @@ if __name__ == "__main__":
     s = Cpuschedule()
     # s.getData()
     # s.Fcfs()
-    s.Sjf()
+    # s.Sjf()
+    s.Priority()
