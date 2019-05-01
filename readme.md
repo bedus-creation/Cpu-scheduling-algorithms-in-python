@@ -5,5 +5,5 @@
 
 # Execute
 ```
-python3 src/Schedular.py
+python3 Runme.py
 ```
