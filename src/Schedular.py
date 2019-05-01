@@ -75,24 +75,38 @@ class Cpuschedule:
         Tat = 0.0
         w=0.0
         Wt = [0]
-        B = []
-        P = []
+        B = [0]
+        P = [0]
         pMax=5
-        # self.n=5
-        # B = [10,1,2,1,5]
-        # P = [3,1,4,5,2]
-        self.n = input("Enter the no of processes:\n")
-        for i in range(int(self.n)):
-            b, p = input("Enter The BurstTime and Priority for Process p" + str(i)+"\n").split()
-            B.append(b)
-            P.append(p)
-            if pMax<int(p):
-                pMax=int(p)
+        self.n=5
+        B = [10,1,2,1,5]
+        P = [3,1,4,5,2]
+        # self.n = input("Enter the no of processes:\n")
+        # for i in range(int(self.n)):
+        #     b, p = input("Enter The BurstTime and Priority for Process p" + str(i)+"\n").split()
+        #     B.append(b)
+        #     P.append(p)
+        #     if pMax<int(p):
+        #         pMax=int(p)
+
         for j in range(0,pMax):
             for i in range(0,int(self.n)):
                 if P[i]==j:
                     w=w+B[i]
                     Wt.append(w)
+
+        # Sort the process according to their priority
+        # for i in range(int(self.n)):
+        #     for j in range(1,int(self.n)):
+        #         if P[j - 1] < P[j]:
+        #             temp = B[j - 1]
+        #             B[j - 1] = B[j]
+        #             B[j] = temp
+        # Wt = [0]
+        # for i in range(1, int(self.n)):
+        #     temp = int(B[i - 1]) + int(Wt[i - 1])
+        #     Wt.append(temp)
+        # print(Wt)
         for i in range(0, int(self.n)):
             Twt = Twt + Wt[i]
         for i in range(0, int(self.n)):

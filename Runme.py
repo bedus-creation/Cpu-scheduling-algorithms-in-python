@@ -25,9 +25,11 @@ class Runme:
             elif ch == 3:
                 self.schedular.Priority()
             elif ch == 4:
-                print("Not Implemented yet.")
+                self.schedular.getData()
+                # print("Not Implemented yet.")
             elif ch == 5:
-                print("Not Implemented yet.")
+                self.schedular.getData()
+                # print("Not Implemented yet.")
             elif ch == 6:
                 self.schedular.getData()
                 self.schedular.RoundRobin()
