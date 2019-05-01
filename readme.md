@@ -5,5 +5,5 @@
 
 # Execute
 ```
-python3 Src/Schedular.py
+python3 src/Schedular.py
 ```
