@@ -74,27 +74,29 @@ class Cpuschedule:
         Bst = 0.0
         Tat = 0.0
         w=0.0
-        Wt = [0]
-        B = [0]
-        P = [0]
-        pMax=5
-        self.n=5
-        B = [10,1,2,1,5]
-        P = [3,1,4,5,2]
-        # self.n = input("Enter the no of processes:\n")
-        # for i in range(int(self.n)):
-        #     b, p = input("Enter The BurstTime and Priority for Process p" + str(i)+"\n").split()
-        #     B.append(b)
-        #     P.append(p)
-        #     if pMax<int(p):
-        #         pMax=int(p)
+        B = []
+        P = []
+        self.n=4
+        self.n = int(input("Enter the no of processes:\n"))
+        pMax=6
+        # B = [5,4,2,4]
+        # P = [4,2,6,3]
+        Wt = [0]*self.n
+        for i in range(int(self.n)):
+            b, p = input("Enter The BurstTime and Priority for Process p" + str(i)+"\n").split()
+            B.append(int(b))
+            P.append(int(p))
+            if pMax<int(p):
+                pMax=int(p)
 
-        for j in range(0,pMax):
-            for i in range(0,int(self.n)):
+        print(B)
+        print(P)
+
+        for j in range(pMax):
+            for i in range(0,self.n):
                 if P[i]==j:
+                    Wt[i]=w
                     w=w+B[i]
-                    Wt.append(w)
-
         # Sort the process according to their priority
         # for i in range(int(self.n)):
         #     for j in range(1,int(self.n)):
@@ -164,3 +166,54 @@ class Cpuschedule:
         print("Average Waiting Time:"+str(Twt/int(self.n)))
         print("Total Turnaround Time:"+str(aTat))
         print("Average Turnaround Time:"+str(aTat/int(self.n)))
+    
+
+    def Wrr(self):
+        Twt=0
+        aTat=0
+        Tat = []
+        B = []
+        W=[]
+        rem_bt = []
+        time = 0
+        self.n=5 # Can Comment Out
+        quantum=1 # Can Comment Out
+        # B=[1,2,3,4,5] # Can Comment Out
+        # W=[1,2,3,4,5] # Can Comment Out
+        self.n = int(input("Enter the no of processes:\n"))
+        quantum = int(input("Enter the value For Quantum:\n"))
+        for i in range(int(self.n)):
+            b, p = input("Enter The BurstTime and Weight for Process p" + str(i)+"\n").split()
+            B.append(int(b))
+            W.append(int(p))
+        Wt = [0]*self.n
+        rem_bt = list(B)
+
+        while (1):
+            done = True
+            for t in range(0, int(self.n)):
+                if rem_bt[t] > 0:
+                    done = False
+                    if W[t] > 0:
+                        quantum *= W[t] 
+                    if rem_bt[t] > quantum:
+                        time += quantum
+                        rem_bt[t] -= quantum
+                    else:
+                        time += rem_bt[t]
+                        Wt[t] = time - B[t]
+                        rem_bt[t] = 0
+            if done == True:
+                break
+        for i in range(self.n):
+            Twt = int(Twt) + int(Wt[i])
+        for i in range(int(self.n)): 
+            temp=int(B[i]) + int(Wt[i])
+            Tat.append(temp)
+            aTat = aTat + Tat[i]  
+        print("Total Waiting Time:"+str(Twt))
+        print("Average Waiting Time:"+str(Twt/int(self.n)))
+        print("Total Turnaround Time:"+str(aTat))
+        print("Average Turnaround Time:"+str(aTat/int(self.n)))
+        
+

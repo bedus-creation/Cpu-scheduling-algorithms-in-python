@@ -13,7 +13,8 @@ class Runme:
             print(" 4. SJF with Preemption.")
             print(" 5. SJF with NonPreemption.")
             print(" 6. RoundRobin.")
-            print(" 7. Quit.")
+            print(" 7. Weighted RoundRobin.")
+            print(" 8. Quit.")
             ch = int(input(" Select : "))
 
             if ch == 1:
@@ -34,6 +35,8 @@ class Runme:
                 self.schedular.getData()
                 self.schedular.RoundRobin()
             elif ch == 7:
+                self.schedular.Wrr()
+            elif ch == 8:
                 print(" See you soon.")
                 break
             else:
