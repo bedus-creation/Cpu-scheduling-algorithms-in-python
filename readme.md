@@ -1,4 +1,5 @@
 # Cpu Scheduling Algorithm in Python
+This is Cpu Scheduling Algorithm implemented in python. 
 
 # Implemented Algorithm
 - First Come First Serve
